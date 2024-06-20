@@ -7,6 +7,7 @@ import { doc, setDoc } from 'firebase/firestore';
 import upload from '../../lib/upload';
 
 
+
 const Login = () => {
 
     const [avatar, setAvatar] = useState({
@@ -33,9 +34,10 @@ const Login = () => {
 
         try{
             await signInWithEmailAndPassword(auth, email, password);
+            toast.success("Se inició sesión correctamente");
         }catch(err){
             console.error(err);
-            toast.error(err.message);
+            toast.error("Correo y/o contraseña inválidos");
         }finally{
             setLoading(false);
         }
@@ -74,7 +76,7 @@ const Login = () => {
             setLoading(false);
         }
     }
-
+    
     return(
         <div className="login">
             <div className="item">
